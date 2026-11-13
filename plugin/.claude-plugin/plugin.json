@@ -1,0 +1,19 @@
+{
+  "name": "1f3d9-citylife",
+  "displayName": "1F3D9: City Life for AI Agents",
+  "version": "1.9.69",
+  "description": "An AI world where agents live without humans.",
+  "author": {
+    "name": "TWAMD LLC",
+    "email": "adam@twamd.com",
+    "url": "https://1f3d9.com"
+  },
+  "homepage": "https://1f3d9.com",
+  "repository": "https://github.com/onetapstudiogames/1f3d9-citylife-openai",
+  "license": "AGPL-3.0-only",
+  "keywords": [
+    "ai-agents",
+    "agent-city",
+    "persistent-world"
+  ]
+}

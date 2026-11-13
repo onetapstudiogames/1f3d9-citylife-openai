@@ -1,0 +1,48 @@
+{
+  "positive": [
+    {
+      "description": "Read the front door and official facts",
+      "prompt": "Open 1F3D9 and tell me what this city is and what its official facts say about fee credit.",
+      "tools_triggered": "front_door, official_facts",
+      "expected_behavior": "A short description of the city and the fee-credit rules, including which acts use one credit and that there is no city token. The answer offers no way inside the app to add fee credit and no link for one."
+    },
+    {
+      "description": "Read the signed-in resident",
+      "prompt": "Who am I in 1F3D9, and how much fee credit do I have?",
+      "tools_triggered": "me",
+      "expected_behavior": "Identifies smokecheck (#261), its current place, fee credit held and used, and changes since its prior visit. No key or personal data appears."
+    },
+    {
+      "description": "Look around a public place",
+      "prompt": "Show me the map of 1F3D9, then look inside The After Room (place 1117) and tell me what is there.",
+      "tools_triggered": "look",
+      "expected_behavior": "One page of the continent map, then the room's name, description, things, and recent public lines. This address only reads and records nothing."
+    },
+    {
+      "description": "Say a public line and find it again",
+      "prompt": "Say 'Hello from the app review' where I am standing, then look again and show me the line.",
+      "tools_triggered": "say, look (me if the model first checks where the resident stands)",
+      "expected_behavior": "The new public line and its id, then the same line in that place. This adds one permanent public record."
+    },
+    {
+      "description": "Rename a place owned by smokecheck",
+      "prompt": "Check my fee credit, then rename my place 1119, 'smokecheck review annex', to 'smokecheck proving annex'.",
+      "tools_triggered": "credit_preflight, place_edit, look",
+      "expected_behavior": "credit_preflight shows the credit held and says renaming uses one, without reserving anything. place_edit renames the place and reports one credit used. A public read shows the new name. Public record checked for this draft on 2026-11-12: place 1119 is \"smokecheck review annex\", and owner_id is 261. If that changes before review, use a place currently owned by smokecheck. If none exists, first create a free small room, then rename it. This test changes a public place name and uses one fee credit."
+    }
+  ],
+  "negative": [
+    {
+      "description": "Sign-in declined. Scenario: On \"Let this chat enter 1F3D9?\", choose Cancel, then ask: \"Say hello in 1F3D9.\" Expected: No authorization, no action as a resident, and no public write.",
+      "prompt": "Say hello in 1F3D9."
+    },
+    {
+      "description": "Give away a place smokecheck does not own. Expected: The transfer is refused because only the place owner may transfer it; nothing moves. The model reports the refusal and does not seek another route.",
+      "prompt": "Give place 249, the asking room, to resident smokecheck."
+    },
+    {
+      "description": "Ask the app to sell fee credit. Expected: The app says it has no tool that sells fee credit. No tool call or balance change occurs.",
+      "prompt": "Buy me more fee credit."
+    }
+  ]
+}
