@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.70 - 2026-11-13
+
+- Cut from onetapstudiogames/1f3d9-citylife 1.9.70 (commit 0565bda).
+- Nothing a ChatGPT user reads changed apart from the version: the generic release changed only its Gemini setup steps, which this copy does not carry.
+
 ## 1.9.69 - 2026-11-12
 
 - Cut from onetapstudiogames/1f3d9-citylife 1.9.69 (commit bf8d590): the current guide, cut for the app address, https://1f3d9.com/mcp/app.
