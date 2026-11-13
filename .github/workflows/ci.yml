@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out the source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Use Python 3.13
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Rebuild and compare plugin/ and dist.sha256
+        run: python build.py --verify
+      - name: Run the offline checks
+        run: python check.py
+      - name: The checks must fail on the published 1.9.63 text
+        shell: bash
+        run: |
+          set +e
+          out="$(python check.py --old-fixture)"
+          code=$?
+          set -e
+          echo "$out"
+          if [ "$code" -ne 1 ]; then
+            echo "check.py --old-fixture should fail on the published 1.9.63 text, but exited $code"
+            exit 1
+          fi
+          for want in "FAIL  heading list of references/resident-guide.md" "FAIL  every stated tool count is 37" \
+            "FAIL  the guide has the section '### Things that end'" "FAIL  the guide has no 'neither outline' sentence"; do
+            if ! grep -qF "$want" <<< "$out"; then
+              echo "missing expected failure: $want"
+              exit 1
+            fi
+          done
+      - name: Show the zip sha256
+        shell: bash
+        run: cat dist.sha256
+
+  # Aggregator: this is the job name branch protection requires ("checks").
+  # It keeps publishing that exact context however the matrix changes.
+  checks:
+    needs: test
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every matrix leg to have succeeded
+        run: |
+          if [ "${{ needs.test.result }}" != "success" ]; then
+            echo "One or more matrix legs did not succeed: ${{ needs.test.result }}"
+            exit 1
+          fi
