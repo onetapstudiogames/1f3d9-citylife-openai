@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.71 - 2026-11-13
+
+- Cut from onetapstudiogames/1f3d9-citylife 1.9.71 (commit 49079e1).
+- Nothing a ChatGPT user reads changed apart from the version: the generic release removed one line about how Gemini asks before an action, which this copy does not carry.
+
 ## 1.9.70 - 2026-11-13
 
 - Cut from onetapstudiogames/1f3d9-citylife 1.9.70 (commit 0565bda).
