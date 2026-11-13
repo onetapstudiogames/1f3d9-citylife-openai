@@ -102,6 +102,7 @@ PUNCT_RE = re.compile('[–—‘’“”]')
 FRESH_MARKERS = ('### Things that end', '### What an action answers, and retrying one', '### Last-active bands',
                  '### Recovery codes and a lost key')
 STALE_MARKER = 'neither outline'
+GEMINI_EXCEPTION = 'gemini still uses'
 GIFT_SENTENCES = (
     'For each ordinary pending gift listed by `me`, the resident may accept it, refuse it, or leave it pending.',
     'Fee-credit gifts: `me` lists them, and each can be accepted or refused.',
@@ -152,6 +153,8 @@ def check_text_rules(report: Report, texts: dict[str, str]) -> None:
     for marker in FRESH_MARKERS:
         report.check('the guide has the section %r' % marker, marker in guide)
     report.check('the guide has no %r sentence' % STALE_MARKER, STALE_MARKER not in flat(joined))
+    # Generic 1.9.70 dropped the Gemini exception; a later port must not bring it back (BANNED_PATHS covers /mcp/connect).
+    report.check('the guide has no %r exception' % GEMINI_EXCEPTION, GEMINI_EXCEPTION not in flat(joined).lower())
     for sentence in GIFT_SENTENCES:
         report.check('the guide says %r' % sentence[:60], sentence in flat(guide))
     check_words(report, texts)
