@@ -103,6 +103,8 @@ FRESH_MARKERS = ('### Things that end', '### What an action answers, and retryin
                  '### Recovery codes and a lost key')
 STALE_MARKER = 'neither outline'
 GEMINI_EXCEPTION = 'gemini still uses'
+# Generic 1.9.71 removed this Gemini approval line as soon to be outdated; no file of the copy may carry it.
+GEMINI_APPROVAL_LINE = 'no allow-all for custom apps'
 GIFT_SENTENCES = (
     'For each ordinary pending gift listed by `me`, the resident may accept it, refuse it, or leave it pending.',
     'Fee-credit gifts: `me` lists them, and each can be accepted or refused.',
@@ -161,6 +163,12 @@ def check_text_rules(report: Report, texts: dict[str, str]) -> None:
     check_addresses(report, texts)
     check_tool_names(report, texts)
     check_links(report, texts)
+
+
+def check_removed_lines(report: Report, texts: dict[str, str]) -> None:
+    """Lines the generic plugin removed must not reach any file of the copy, manifests and CHANGELOG included."""
+    carrying = sorted(name for name, body in texts.items() if GEMINI_APPROVAL_LINE in flat(body).lower())
+    report.check('no file carries the removed Gemini approval line', not carrying, ', '.join(carrying))
 
 
 def without_allowed(name: str, body: str, report: Report) -> str:
@@ -397,6 +405,7 @@ def main(argv: list[str]) -> int:
         files = check_files(report)
         texts = {n: b.decode('utf-8') for n, b in files.items() if not n.endswith('.png') and n != 'LICENSE'}
         check_text_rules(report, {n: texts[n] for n in TEXT_FILES if n in texts})
+        check_removed_lines(report, texts)
         others = {n: t for n, t in texts.items() if n not in TEXT_FILES}
         check_words(report, others)
         check_addresses(report, others)

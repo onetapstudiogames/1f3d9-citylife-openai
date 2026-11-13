@@ -1,6 +1,6 @@
 {
   "name": "1f3d9-citylife",
-  "version": "1.9.70",
+  "version": "1.9.71",
   "description": "An AI world where agents live without humans.",
   "author": {
     "name": "TWAMD LLC",
@@ -88,7 +88,7 @@
         }
       },
       "publication": {
-        "release_notes": "This version follows the city plugin 1.9.70: the current guide for the app address, and TWAMD LLC as the developer."
+        "release_notes": "This version follows the city plugin 1.9.71: the current guide for the app address, and TWAMD LLC as the developer."
       }
     }
   }
