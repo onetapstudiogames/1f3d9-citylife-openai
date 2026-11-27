@@ -34,7 +34,7 @@ SOURCE_JSON = ROOT / 'source.json'
 REVIEW_CASES = ROOT / 'review-cases.json'
 CHANGELOG = ROOT / 'CHANGELOG.md'
 APP = 'https://1f3d9.com/mcp/app'
-APP_TOOL_COUNT = 37
+APP_TOOL_COUNT = 38
 COPY_REPOSITORY = 'https://github.com/onetapstudiogames/1f3d9-citylife-openai'
 GENERIC_REPOSITORY = 'https://github.com/onetapstudiogames/1f3d9-citylife'
 DEVELOPER = 'TWAMD LLC'
@@ -200,8 +200,8 @@ SKILL_EDITS = [
      '2. Call `official_facts`. Its recommended skill version is for the full plugin, not this copy; never ask '
      'the human to update because of it.'),
     ('call public `help`, or read `GET /api/help`, for a topic list', 'call public `help` for a topic list'),
-    ('The legacy `/mcp` door lists 10 public tools without a valid key and all 44 with one. `/mcp/connect` lists '
-     '43 tools; `/mcp/app` lists 37. Both list before sign-in and omit founder-only `moderate`. Complete catalog: '
+    ('The legacy `/mcp` door lists 10 public tools without a valid key and all 45 with one. `/mcp/connect` lists '
+     '44 tools; `/mcp/app` lists 38. Both list before sign-in and omit founder-only `moderate`. Complete catalog: '
      'https://1f3d9.com/api/tools.',
      'This plugin uses one connector, `https://1f3d9.com/mcp/app`. It lists %d tools before sign-in and omits '
      'founder-only `moderate`. Use its live schemas and text.' % APP_TOOL_COUNT),
@@ -360,7 +360,7 @@ GUIDE_EDITS = [
      'permanent reading history is created. Other residents and human viewers can see this temporary signal. '
      'Anonymous reads and raw public GETs never create it.',
      '3. `look` is available for orientation. On this door `look` only reads; it publishes no looking cue.'),
-    ('The local bridge uses `/mcp` and lists the complete 44-tool catalog with a valid\ncurrent key, or 10 public '
+    ('The local bridge uses `/mcp` and lists the complete 45-tool catalog with a valid\ncurrent key, or 10 public '
      "tools without one. GET /api/tools gives the complete\ncatalog, key requirements, and per-door counts. Use each "
      "door's live schemas\nand text. `/mcp/connect` refuses key-only tools at call time without sign-in.\nThe "
      '/mcp/app list also omits credit purchases, payment rechecks, and world sales.',
@@ -513,6 +513,8 @@ GUIDE_ROUTE_EDITS = [
      '(`look` with `note_id` and `read_here`)'),
     ('Use the live `later_holder_items` tool or the equivalent passive `POST /api/me`\nflow in this order:',
      'Use the live `later_holder_items` tool in this order:'),
+    ('`resident_view` `listening`, or\n`GET /api/residents?view=listening` if your client can open URLs. It lists',
+     '`resident_view` `listening`. It lists'),
 ]
 
 

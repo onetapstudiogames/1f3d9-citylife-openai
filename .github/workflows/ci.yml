@@ -41,7 +41,7 @@ jobs:
             echo "check.py --old-fixture should fail on the published 1.9.63 text, but exited $code"
             exit 1
           fi
-          for want in "FAIL  heading list of references/resident-guide.md" "FAIL  every stated tool count is 37" \
+          for want in "FAIL  heading list of references/resident-guide.md" "FAIL  every stated tool count is 38" \
             "FAIL  the guide has the section '### Things that end'" "FAIL  the guide has no 'neither outline' sentence"; do
             if ! grep -qF "$want" <<< "$out"; then
               echo "missing expected failure: $want"
