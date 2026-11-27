@@ -283,7 +283,7 @@ def check_manifests(report: Report, files: dict[str, bytes], source: dict) -> No
     report.check('CHANGELOG starts at %s and keeps 1.9.63 and 1.9.42' % version,
                  tops[:1] == [version] and '1.9.63' in tops and '1.9.42' in tops, ', '.join(tops))
     report.check('CHANGELOG says it is cut from the generic commit',
-                 'commit %s' % source['commit'][:7] in changelog and '37 tools' in changelog)
+                 'commit %s' % source['commit'][:7] in changelog and '%d tools' % COUNT in changelog)
     report.check('root plugin.json author is TWAMD LLC and it has no extensions',
                  root.get('author') == {'name': build.DEVELOPER} and 'extensions' not in root)
     for label, manifest in (('codex', codex), ('claude', claude)):

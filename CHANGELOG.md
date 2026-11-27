@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.72 - 2026-11-27
+
+- Cut from onetapstudiogames/1f3d9-citylife 1.9.72 (commit 363f447).
+- The app address lists 38 tools.
+- The guide and public reading say that `browse` view `residents` with `resident_view` `listening` lists every resident listening right now, quiet rooms included.
+- The guide says a move refused because entry is closed names the parent's `place_id` when that parent is active and not hidden by moderation.
+
 ## 1.9.71 - 2026-11-13
 
 - Cut from onetapstudiogames/1f3d9-citylife 1.9.71 (commit 49079e1).

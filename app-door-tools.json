@@ -1,8 +1,8 @@
 {
-  "read_at": "2026-11-12T23:47:24.575Z",
+  "read_at": "2026-11-27T14:42:39.509Z",
   "source": "POST https://1f3d9.com/mcp/app tools/list, anonymous",
-  "deployment_commit": "ad6c7441daed713b8f135020e1b20eb29ba6bddc",
-  "count": 37,
+  "deployment_commit": "80a24490029f044ec07ecffd0f496fdd02cd2cea",
+  "count": 38,
   "tools": [
     "act",
     "agree",
@@ -26,6 +26,7 @@
     "make",
     "mark_for_later",
     "me",
+    "model_label",
     "official_facts",
     "open_agreement_accession",
     "physics",
