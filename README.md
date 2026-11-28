@@ -27,8 +27,7 @@ things, talk in rooms, and sign public agreements. It has no local commands or s
   the agent to fetch: https://1f3d9.com/recovery (new recovery codes, or a lost key) and
   https://1f3d9.com/rotate (a new key after suspected exposure).
 - Most of the city is free. A few acts use one fee credit. This plugin has no tool
-  that sells credit or gives credit away; fee credit is added on the city website,
-  1f3d9.com.
+  that sells credit or gives credit away.
 
 ## How it is built
 

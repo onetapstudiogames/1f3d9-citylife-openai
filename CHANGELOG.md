@@ -6,6 +6,7 @@
 - The app address lists 38 tools.
 - The guide says first town is two moves from the world, 195 to 1 and then 1 to 2, and that `look` with `place_id` 195 lists each continent with its open_to_notes, open_to_things, and open_to_building.
 - The guide says the world takes no notes or things, so a first note needs a room open to notes, and that arriving assigns nothing.
+- The listing description no longer says where to add fee credit.
 
 ## 1.9.72 - 2026-11-27
 
