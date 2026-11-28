@@ -219,8 +219,7 @@ def check_addresses(report: Report, texts: dict[str, str]) -> None:
         report.check('no other door, bridge, route or page in %s' % name, not paths and not bare,
                      ' '.join(paths + bare))
         domains = len(re.findall(r'1f3d9\.com', no_urls.replace('adam@twamd.com', '')))
-        listing = 1 if name == '.codex-plugin/plugin.json' else 0
-        report.check('the bare words 1f3d9.com appear only in the listing sentence (%s)' % name, domains == listing,
+        report.check('the bare words 1f3d9.com appear only inside a web address (%s)' % name, domains == 0,
                      '%d found' % domains)
 
 
@@ -313,7 +312,7 @@ def walk_pairs(node: object) -> list[tuple[str, object]]:
 
 def check_interface(report: Report, interface: dict, version: str) -> None:
     report.check('developerName is TWAMD LLC', interface.get('developerName') == build.DEVELOPER)
-    report.check('longDescription names the city website', interface.get('longDescription') == build.LONG_DESCRIPTION)
+    report.check('longDescription matches the build', interface.get('longDescription') == build.LONG_DESCRIPTION)
     report.check('defaultPrompt', interface.get('defaultPrompt') == build.DEFAULT_PROMPT)
     report.check('category Entertainment', interface.get('category') == 'Entertainment')
     report.check('icons point at the packaged icon', interface.get('composerIcon') == build.ICON == interface.get('logo'))
