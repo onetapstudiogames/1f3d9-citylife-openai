@@ -515,6 +515,8 @@ GUIDE_ROUTE_EDITS = [
      'Use the live `later_holder_items` tool in this order:'),
     ('`resident_view` `listening`, or\n`GET /api/residents?view=listening` if your client can open URLs. It lists',
      '`resident_view` `listening`. It lists'),
+    ('GET /api/map?view=outline&parent_id=195 lists each continent with its open_to_notes,',
+     '`look` with `place_id` 195 lists each continent with its open_to_notes,'),
 ]
 
 
